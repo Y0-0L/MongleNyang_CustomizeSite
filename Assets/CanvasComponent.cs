@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ProjectWindowCallback;
-
-//using Microsoft.Unity.VisualStudio.Editor;
+//using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +14,8 @@ public class CanvasComponent : MonoBehaviour
     public GameObject[] ContentLayouts = new GameObject[3];
     public Image[] MenuButtons = new Image[3];
     public int[] SelectedContentId = {0,0,0};
-    Color EnableColor = new(1,1,1,1);
-    Color DisableColor = new(1,1,1,0);
+    Color EnableColor = new Color(1,1,1,1);
+    Color DisableColor = new Color(1,1,1,0);
 
     // Start is called before the first frame update
     void Start()

@@ -18,8 +18,7 @@ public class GameManager : MonoBehaviour
     {
         float standartRatio = (float)1920/(float)1080;
         float screenRatio = (float)Screen.height / (float)Screen.width;
-        Debug.Log(standartRatio);
-        Debug.Log(screenRatio);
+
         if (screenRatio>standartRatio)
         {
             PortraitCanvas.GetComponent<CanvasScaler>().matchWidthOrHeight = 0;
@@ -28,7 +27,7 @@ public class GameManager : MonoBehaviour
         {
             PortraitCanvas.GetComponent<CanvasScaler>().matchWidthOrHeight = 1;
         }
-        PortraitCanvas.SetActive(true);
+        PortraitCanvas.SetActive(true); //비율에 따라 안켜지게 바꿔서 일단 이대로 둠.
 
         /*
         float ratio = (float)Screen.height / (float)Screen.width;

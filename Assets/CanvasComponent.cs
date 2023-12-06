@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UI;
-
-//using UnityEditor.ProjectWindowCallback;
+//using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CanvasComponent : MonoBehaviour
 {
     public GameManager gameManager;
-
+   
     public Image BoxImage;
     public  Image CatImage;
     public  Image AccImage;
@@ -34,7 +32,8 @@ public class CanvasComponent : MonoBehaviour
     }
     public void SetCategory(int enablingCategoryId)
     {
-        PlayBtnClickSound(BasicButtonClickSound);
+        //PlayBtnClickSound(BasicButtonClickSound);
+
         //0: cat, 1: box, 2: acc
         for (int i = 0; i < ContentLayouts.Length; i++)
         {
@@ -54,7 +53,7 @@ public class CanvasComponent : MonoBehaviour
     }
     public void SetContents_Cat(int id)
     {
-        PlayBtnClickSound(BasicButtonClickSound);
+        //PlayBtnClickSound(BasicButtonClickSound);
         
         CatImage.sprite = gameManager.CatImages[id];
         
@@ -66,7 +65,7 @@ public class CanvasComponent : MonoBehaviour
     }
     public void SetContents_Box(int id)
     {
-        PlayBtnClickSound(BasicButtonClickSound);
+        //PlayBtnClickSound(BasicButtonClickSound);
         
         BoxImage.sprite = gameManager.BoxImages[id];
 
@@ -78,7 +77,7 @@ public class CanvasComponent : MonoBehaviour
     }
     public void SetContents_Acc(int id)
     {
-        PlayBtnClickSound(BasicButtonClickSound);
+        //PlayBtnClickSound(BasicButtonClickSound);
         
         AccImage.sprite = gameManager.AccImages[id];
 
@@ -107,6 +106,11 @@ public class CanvasComponent : MonoBehaviour
     }
     public void PlayBtnClickSound(AudioClip audioClip)
     {
-        if (audioSource.isPlaying == false) {audioSource.PlayOneShot(audioClip);}
+        audioSource.PlayOneShot(audioClip);
+    }
+
+    public void PlayBtnClickSound_Basic()
+    {
+        PlayBtnClickSound(BasicButtonClickSound);
     }
 }

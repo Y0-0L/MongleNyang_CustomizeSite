@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CanvasComponent : MonoBehaviour
 {
     public GameManager gameManager;
-   
+
     public Image BoxImage;
     public  Image CatImage;
     public  Image AccImage;
@@ -20,15 +20,30 @@ public class CanvasComponent : MonoBehaviour
     public AudioClip BasicButtonClickSound;
     public AudioClip RandomButtonClickSound;
 
+    //comb
+    public Text CombCat;
+    public Text CombBox;
+    public Text CombAcc;
+    
+    string[] Cat_Names = {"하양이", "치즈태비", "고등어태비", "노랑얼룩", "젖소", "삼색이", "카오스", "턱시도", "까망이"};
+    string[] Box_Names = {"기본상자", "귤상자", "생선상자", "라면상자", "바구니", "CAT상자"};
+    string[] Acc_Names = {"없음", "나비넥타이", "실뭉치", "나뭇잎", "생선", "귤"};
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         SetCategory(0);
+        SetContents_Cat(0);
+        SetContents_Box(0);
+        SetContents_Acc(0);
+
+        /*
         for (int i = 0; i < ContentLayouts.Length; i++)
         {
             ContentLayouts[i].transform.GetChild(0).gameObject.GetComponent<Image>().color = EnableColor;
         }
+        */
     }
     public void SetCategory(int enablingCategoryId)
     {
@@ -54,7 +69,8 @@ public class CanvasComponent : MonoBehaviour
     public void SetContents_Cat(int id)
     {
         //PlayBtnClickSound(BasicButtonClickSound);
-        
+        CombCat.text = Cat_Names[id];
+
         CatImage.sprite = gameManager.CatImages[id];
         
         int SelectedContentIndex = SelectedContentId[0];
@@ -66,6 +82,7 @@ public class CanvasComponent : MonoBehaviour
     public void SetContents_Box(int id)
     {
         //PlayBtnClickSound(BasicButtonClickSound);
+        CombBox.text = Box_Names[id];
         
         BoxImage.sprite = gameManager.BoxImages[id];
 
@@ -78,7 +95,8 @@ public class CanvasComponent : MonoBehaviour
     public void SetContents_Acc(int id)
     {
         //PlayBtnClickSound(BasicButtonClickSound);
-        
+        CombAcc.text = Acc_Names[id];
+
         AccImage.sprite = gameManager.AccImages[id];
 
         int SelectedContentIndex = SelectedContentId[2];

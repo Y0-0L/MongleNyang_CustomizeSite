@@ -25,9 +25,12 @@ public class CanvasComponent : MonoBehaviour
     public Text CombBox;
     public Text CombAcc;
     
-    string[] Cat_Names = {"하양이", "치즈태비", "고등어태비", "노랑얼룩", "젖소", "삼색이", "카오스", "턱시도", "까망이"};
-    string[] Box_Names = {"기본상자", "귤상자", "생선상자", "라면상자", "바구니", "CAT상자"};
-    string[] Acc_Names = {"없음", "나비넥타이", "실뭉치", "나뭇잎", "생선", "귤"};
+    string[] Cat_Names = {"하양이", "치즈태비", "고등어", "노랑얼룩", "젖소", "삼색이", "카오스", "턱시도", "까망이"};
+    string[] Box_Names = {"종이상자", "귤상자", "생선상자", "라면상자", "바구니", "CAT상자"};
+    string[] Acc_Names = {"없음", "리본", "실뭉치", "나뭇잎", "생선", "귤"};
+
+    string[] CombText = {"하양이", "종이상자", "없음"};
+    public Text CompField;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +40,7 @@ public class CanvasComponent : MonoBehaviour
         SetContents_Cat(0);
         SetContents_Box(0);
         SetContents_Acc(0);
-
+        
         /*
         for (int i = 0; i < ContentLayouts.Length; i++)
         {
@@ -69,7 +72,10 @@ public class CanvasComponent : MonoBehaviour
     public void SetContents_Cat(int id)
     {
         //PlayBtnClickSound(BasicButtonClickSound);
-        CombCat.text = Cat_Names[id];
+        
+        CombText[0] = Cat_Names[id];
+        RefreshCombText();
+        CombCat.text = Cat_Names[id]; //나중에 뺴야함
 
         CatImage.sprite = gameManager.CatImages[id];
         
@@ -82,7 +88,9 @@ public class CanvasComponent : MonoBehaviour
     public void SetContents_Box(int id)
     {
         //PlayBtnClickSound(BasicButtonClickSound);
-        CombBox.text = Box_Names[id];
+        CombText[1] = Box_Names[id];
+        RefreshCombText();
+        CombBox.text = Box_Names[id]; //나중에 뺴야함
         
         BoxImage.sprite = gameManager.BoxImages[id];
 
@@ -95,7 +103,9 @@ public class CanvasComponent : MonoBehaviour
     public void SetContents_Acc(int id)
     {
         //PlayBtnClickSound(BasicButtonClickSound);
-        CombAcc.text = Acc_Names[id];
+        CombText[2] = Acc_Names[id];
+        RefreshCombText();
+        CombAcc.text = Acc_Names[id]; //나중에 뺴야함
 
         AccImage.sprite = gameManager.AccImages[id];
 
@@ -117,10 +127,18 @@ public class CanvasComponent : MonoBehaviour
         SetContents_Box(boxRandId);
         SetContents_Acc(accRandId);
     }
+    public void RefreshCombText()
+    {
+        CompField.text = CombText[0] + '/' + CombText[1] + '/' + CombText[2];
+    }
     public void OpenLink(string url)
     {
         PlayBtnClickSound(RandomButtonClickSound);
         Application.OpenURL(url);
+    }
+    public void CopyComp()
+    {
+        GUIUtility.systemCopyBuffer = CompField.text;
     }
     public void PlayBtnClickSound(AudioClip audioClip)
     {
@@ -130,5 +148,13 @@ public class CanvasComponent : MonoBehaviour
     public void PlayBtnClickSound_Basic()
     {
         PlayBtnClickSound(BasicButtonClickSound);
+    }
+    public void PlayBtnClickSound_Random()
+    {
+        PlayBtnClickSound(RandomButtonClickSound);
+    }
+    public void PlayObjetsAnim(Animation animationComp)
+    {
+        animationComp.Play();
     }
 }

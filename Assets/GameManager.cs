@@ -14,10 +14,15 @@ public class GameManager : MonoBehaviour
     public Sprite[] BoxImages;
     public Sprite[] MenuButton_Selected;
     public Sprite[] MenuButton_Deselected;
+
+    public Texture2D basicCursor;
+    public Texture2D clickedCursor;
     
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.SetCursor(basicCursor, new Vector2(basicCursor.width / 3, 0), CursorMode.Auto);
+
         StartCanvas.SetActive(true);
         ShopPopupCanvas.SetActive(false);
 
@@ -50,7 +55,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetMouseButtonDown(0))
+        {
+            Cursor.SetCursor(clickedCursor, new Vector2(clickedCursor.width / 3, 0), CursorMode.Auto);
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            Cursor.SetCursor(basicCursor, new Vector2(basicCursor.width / 3, 0), CursorMode.Auto);
+        }
     }
 
     void ChangeCanvasByDisplayAspect(bool isPortaitDisplay)

@@ -20,16 +20,13 @@ public class CanvasComponent : MonoBehaviour
     public AudioClip BasicButtonClickSound;
     public AudioClip RandomButtonClickSound;
 
-    //comb
-    public Text CombCat;
-    public Text CombBox;
-    public Text CombAcc;
-    
-    string[] Cat_Names = {"하양이", "치즈태비", "고등어", "노랑얼룩", "젖소", "삼색이", "카오스", "턱시도", "까망이"};
-    string[] Box_Names = {"종이상자", "귤상자", "생선상자", "라면상자", "바구니", "CAT상자"};
-    string[] Acc_Names = {"없음", "리본", "실뭉치", "나뭇잎", "생선", "귤"};
 
-    string[] CombText = {"하양이", "종이상자", "없음"};
+    
+    string[] Cat_Names = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    string[] Box_Names = {"1", "2", "3", "4", "5", "6"};
+    string[] Acc_Names = {"1", "2", "3", "4", "5", "6"};
+
+    string[] CombText = {"1", "1", "1"};
     public Text CompField;
 
     // Start is called before the first frame update
@@ -75,7 +72,7 @@ public class CanvasComponent : MonoBehaviour
         
         CombText[0] = Cat_Names[id];
         RefreshCombText();
-        CombCat.text = Cat_Names[id]; //나중에 뺴야함
+
 
         CatImage.sprite = gameManager.CatImages[id];
         
@@ -90,7 +87,7 @@ public class CanvasComponent : MonoBehaviour
         //PlayBtnClickSound(BasicButtonClickSound);
         CombText[1] = Box_Names[id];
         RefreshCombText();
-        CombBox.text = Box_Names[id]; //나중에 뺴야함
+
         
         BoxImage.sprite = gameManager.BoxImages[id];
 
@@ -105,7 +102,7 @@ public class CanvasComponent : MonoBehaviour
         //PlayBtnClickSound(BasicButtonClickSound);
         CombText[2] = Acc_Names[id];
         RefreshCombText();
-        CombAcc.text = Acc_Names[id]; //나중에 뺴야함
+
 
         AccImage.sprite = gameManager.AccImages[id];
 
@@ -129,17 +126,14 @@ public class CanvasComponent : MonoBehaviour
     }
     public void RefreshCombText()
     {
-        CompField.text = CombText[0] + '/' + CombText[1] + '/' + CombText[2];
+        CompField.text = CombText[0] + CombText[1] + CombText[2];
     }
     public void OpenLink(string url)
     {
         PlayBtnClickSound(RandomButtonClickSound);
         Application.OpenURL(url);
     }
-    public void CopyComp()
-    {
-        GUIUtility.systemCopyBuffer = CompField.text;
-    }
+
     public void PlayBtnClickSound(AudioClip audioClip)
     {
         audioSource.PlayOneShot(audioClip);

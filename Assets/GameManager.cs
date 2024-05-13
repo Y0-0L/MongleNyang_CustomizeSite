@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.SetCursor(basicCursor, new Vector2(basicCursor.width / 3, 0), CursorMode.Auto);
+        //Cursor.SetCursor(basicCursor, new Vector2(basicCursor.width / 3, 0), CursorMode.Auto);
 
         StartCanvas.SetActive(true);
         ShopPopupCanvas.SetActive(false);
@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /* 마우스 커서 변경 코드 주석처리
         if(Input.GetMouseButtonDown(0))
         {
             Cursor.SetCursor(clickedCursor, new Vector2(clickedCursor.width / 3, 0), CursorMode.Auto);
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
         {
             Cursor.SetCursor(basicCursor, new Vector2(basicCursor.width / 3, 0), CursorMode.Auto);
         }
+        */
     }
 
     void ChangeCanvasByDisplayAspect(bool isPortaitDisplay)

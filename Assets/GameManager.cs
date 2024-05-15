@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
             StartCanvas.GetComponent<CanvasScaler>().matchWidthOrHeight = 1;
             ShopPopupCanvas.GetComponent<CanvasScaler>().matchWidthOrHeight = 1;
         }
+        //Camera.main.orthographicSize = (float)Screen.height/2;
         PortraitCanvas.SetActive(true);
 
         /*
